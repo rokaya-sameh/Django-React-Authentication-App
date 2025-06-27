@@ -7,3 +7,11 @@ html, body{
   margin: 0; 
   padding: 0;
 }
+body {
+  background-color: #b22222;  /* FireBrick Red base */
+  background-image: linear-gradient(to bottom right, #b22222, #ffcc70); /* Reddish gold gradient */
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}

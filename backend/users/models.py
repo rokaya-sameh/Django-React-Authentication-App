@@ -62,3 +62,32 @@ def password_reset_token_created(reset_password_token, *args, **kwargs):
 
     msg.attach_alternative(html_message, "text/html")
     msg.send()
+
+
+    # models.py
+
+
+class MakeUp(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to='makeup/')
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+
+class Cosmetic(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to='cosmetics/')
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+
+class Bundle(models.Model):  # "Pundle"
+    title = models.CharField(max_length=100)
+    products = models.ManyToManyField(Cosmetic)
+    offer_price = models.DecimalField(max_digits=6, decimal_places=2)
+    image = models.ImageField(upload_to='bundle_images/', blank=True, null=True)
+
+class Offer(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    discount_percent = models.IntegerField()
+    valid_until = models.DateField()
+    image = models.ImageField(upload_to='offers/', blank=True, null=True)
